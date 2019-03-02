@@ -29,6 +29,8 @@
     color: #faf5fa;
     padding: 15px;
     margin: 20px;
+    width: 90%;
+    border-radius: 25px;
     background: rgb(247, 100, 32);
     border: solid 1px #f3552e;
     cursor: pointer;
