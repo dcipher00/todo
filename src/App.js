@@ -16,9 +16,9 @@ class App extends Component {
     this.setState({ noteText: noteText.target.value})
   }
 
-  handleKeyPress = (event) => {
+  handleKeyPress(event){
     if(event.key === 'Enter') {
-
+      this.addNote();
     }
   }
 
@@ -52,6 +52,7 @@ class App extends Component {
         value={this.state.noteText}
         onChange={noteText => this.updateNoteText(noteText)}
         onKeyPress={this.handleKeyPress.bind(this)}
+        
         />
       </div>
     );

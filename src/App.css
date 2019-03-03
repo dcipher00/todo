@@ -7,7 +7,7 @@
     height: 100%;
   }
   body {
-    background: #4c0a52;
+    background: rgb(92, 3, 155);
   }
   #root {
     width: 100%;
@@ -21,18 +21,19 @@
     font-weight: bold;
     font-style: italic;
     color: #f8f6f8;
-    background: #f12b5c;
+    background: rgb(69, 2, 117);
     padding: 25px;
     text-align: center;
   }
   .note {
-    color: #faf5fa;
+    color: rgb(92, 3, 155);
+    font-weight: bold;
     padding: 15px;
     margin: 20px;
     width: 90%;
     border-radius: 25px;
-    background: rgb(247, 100, 32);
-    border: solid 1px #f3552e;
+    background: #c2bec2;
+    border: solid 1px #c2bec2;
     cursor: pointer;
     box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
     -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
@@ -55,7 +56,7 @@
     font-size: 28px;
     font-weight: bold;
     color: #f7f4f5;
-    background: #f13970;
+    background: #FF4500;
     cursor: pointer;
     box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.8);
     -webkit-box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.8);
@@ -74,7 +75,7 @@
     padding: 20px;
     border: none;
     outline: none;
-    background: #0da5d3;
+    background: #FF4500;
     font-size: 50px;
-    color: #f1eaea;
+    color: #fcf8f8;
   }
