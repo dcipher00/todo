@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Note from './components/Note';
+import HTML5Backend from 'react-dnd-html5-backend';
+import {DragDropContext} from 'react-dnd';
+import Target from './components/Target';
 
 class App extends Component {
 
@@ -18,7 +21,7 @@ class App extends Component {
 
   handleKeyPress = (event) => {
     if(event.key === 'Enter') {
-
+      this.addNote();
     }
   }
 
@@ -39,13 +42,13 @@ class App extends Component {
   render() {
     let notes = this.state.notes.map((val, key) => {
       return <Note key={key} text={val}
-        deleteMethod={ () => this.deleteNote(key) } />
+        handleDrop={ () => this.deleteNote(key) } />
     })
     return (
       <div className="Container">
       <div className="header">Todo App</div>
       {notes}
-      <div className="btn" onClick={this.addNote.bind(this)}>+</div>
+      <div className="btn" onClick={this.deleteNote.bind(this)}>+</div>
       <input type="text"
         ref={((input) => {this.textInput = input})}
         className="textInput"
@@ -58,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default DragDropContext(HTML5Backend)(App);
