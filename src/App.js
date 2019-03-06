@@ -9,7 +9,14 @@ class App extends Component {
     this.state = {
       noteText: '',
       notes: [],
+      on:false,
     }
+  }
+
+  toggle = () => {
+    this.setState({
+      on: !this.state.on
+    })
   }
 
   updateNoteText(noteText) {
@@ -18,7 +25,7 @@ class App extends Component {
 
   handleKeyPress = (event) => {
     if(event.key === 'Enter') {
-
+      this.addNote();
     }
   }
 
@@ -45,14 +52,24 @@ class App extends Component {
       <div className="Container">
       <div className="header">Todo App</div>
       {notes}
-      <div className="btn" onClick={this.addNote.bind(this)}>+</div>
-      <input type="text"
+      <div className="btn">
+      <div className="flip-inner">
+        <div className="flip-front" onClick={this.toggle.bind(this)}>
+        +
+        </div>
+        <div className="flip-back" onClick={this.deleteNote.bind(this)}>
+            <i className="fa fa-trash" style={{ fontSize: "33px" }}></i>
+        </div>
+      </div>
+      </div>
+      { this.state.on && (
+      <input type="text" placeholder="Take a Note . . ." style={{width: "75%"}}
         ref={((input) => {this.textInput = input})}
         className="textInput"
         value={this.state.noteText}
         onChange={noteText => this.updateNoteText(noteText)}
         onKeyPress={this.handleKeyPress.bind(this)}
-        />
+      /> )}
       </div>
     );
   }
