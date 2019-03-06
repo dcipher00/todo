@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Note from './components/Note';
-import HTML5Backend from 'react-dnd-html5-backend';
-import {DragDropContext} from 'react-dnd';
-import Target from './components/Target';
 
 class App extends Component {
 
@@ -12,7 +9,14 @@ class App extends Component {
     this.state = {
       noteText: '',
       notes: [],
+      on:false,
     }
+  }
+
+  toggle = () => {
+    this.setState({
+      on: !this.state.on
+    })
   }
 
   updateNoteText(noteText) {
@@ -42,23 +46,33 @@ class App extends Component {
   render() {
     let notes = this.state.notes.map((val, key) => {
       return <Note key={key} text={val}
-        handleDrop={ () => this.deleteNote(key) } />
+        deleteMethod={ () => this.deleteNote(key) } />
     })
     return (
       <div className="Container">
       <div className="header">Todo App</div>
       {notes}
-      <div className="btn" onClick={this.deleteNote.bind(this)}>+</div>
-      <input type="text"
+      <div className="btn">
+      <div className="flip-inner">
+        <div className="flip-front" onClick={this.toggle.bind(this)}>
+        +
+        </div>
+        <div className="flip-back" onClick={this.deleteNote.bind(this)}>
+            <i className="fa fa-trash" style={{ fontSize: "33px" }}></i>
+        </div>
+      </div>
+      </div>
+      { this.state.on && (
+      <input type="text" placeholder="Take a Note . . ." style={{width: "75%"}}
         ref={((input) => {this.textInput = input})}
         className="textInput"
         value={this.state.noteText}
         onChange={noteText => this.updateNoteText(noteText)}
         onKeyPress={this.handleKeyPress.bind(this)}
-        />
+      /> )}
       </div>
     );
   }
 }
 
-export default DragDropContext(HTML5Backend)(App);
+export default App;
